@@ -16,7 +16,7 @@ test.describe('Complete Booking System Workflow', () => {
       futureDate.setDate(futureDate.getDate() + 1); // Move to Monday
     }
     
-    // Click on the date buttonr
+    // Click on the date button
     await page.locator(`button[name="day"]:has-text("${format(futureDate, 'd')}")`).click();
     
     // Verify the selected date is displayed correctly

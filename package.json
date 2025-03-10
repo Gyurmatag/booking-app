@@ -12,7 +12,21 @@
     "test:chrome": "playwright test --project=chromium",
     "test:firefox": "playwright test --project=firefox",
     "test:webkit": "playwright test --project=webkit",
-    "test:debug": "playwright test --debug"
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "test:chrome:headed": "playwright test --project=chromium --headed",
+    "test:firefox:headed": "playwright test --project=firefox --headed",
+    "test:webkit:headed": "playwright test --project=webkit --headed",
+    "test:trace": "playwright test --trace on",
+    "test:slow": "playwright test --slow-mo=100",
+    "test:report": "playwright test --reporter=html",
+    "test:update-snapshots": "playwright test --update-snapshots",
+    "test:single": "playwright test -g",
+    "test:parallel": "playwright test --workers=4",
+    "test:retry": "playwright test --retries=3",
+    "test:timeout": "playwright test --timeout=60000",
+    "test:debug:console": "playwright test --debug --console-log-level=debug",
+    "test:debug:verbose": "playwright test --debug --verbose"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.2",
