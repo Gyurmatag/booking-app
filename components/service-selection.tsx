@@ -40,6 +40,18 @@ export default function ServiceSelection({ onServiceSelect, selectedService }: S
           </Card>
         ))}
       </div>
+
+      {selectedService && (
+        <div className="mt-4 text-center">
+          <p>
+            Selected service:{" "}
+            <span className="font-medium" data-testid="selected-service">
+              {selectedService.name}
+            </span>{" "}
+            - ${selectedService.price}
+          </p>
+        </div>
+      )}
     </div>
   )
 }

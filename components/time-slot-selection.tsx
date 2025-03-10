@@ -50,6 +50,15 @@ export default function TimeSlotSelection({ date, onTimeSelect, selectedTime }: 
           </Button>
         ))}
       </div>
+
+      {selectedTime && (
+        <p className="mt-4 text-center">
+          Selected time:{" "}
+          <span className="font-medium" data-testid="selected-time">
+            {selectedTime}
+          </span>
+        </p>
+      )}
     </div>
   )
 }

@@ -43,14 +43,29 @@ export default function BookingSystem() {
     setBookingData({ ...bookingData, date })
   }
 
+  // Update the handleTimeSelect function to not automatically advance to the next step
   const handleTimeSelect = (timeSlot: string) => {
     setBookingData({ ...bookingData, timeSlot })
-    setActiveTab("service")
+    // Remove automatic tab change: setActiveTab("service")
   }
 
+  // Update the handleServiceSelect function to not automatically advance to the next step
   const handleServiceSelect = (service: Service) => {
     setBookingData({ ...bookingData, service })
-    setActiveTab("details")
+    // Remove automatic tab change: setActiveTab("details")
+  }
+
+  // Add these new functions to handle the "Next" button clicks
+  const goToServiceStep = () => {
+    if (bookingData.timeSlot) {
+      setActiveTab("service")
+    }
+  }
+
+  const goToDetailsStep = () => {
+    if (bookingData.service) {
+      setActiveTab("details")
+    }
   }
 
   const handleCustomerSubmit = (customerData: BookingData["customer"]) => {
@@ -128,8 +143,8 @@ export default function BookingSystem() {
                     {format(bookingData.date, "EEEE, MMMM do, yyyy")}
                   </span>
                 </p>
-                <Button onClick={() => goToTab("time")} data-testid="continue-to-time">
-                  Continue to Time Selection
+                <Button onClick={() => goToTab("time")} data-testid="next-to-time" disabled={!bookingData.date}>
+                  Next
                 </Button>
               </div>
             )}
@@ -145,6 +160,9 @@ export default function BookingSystem() {
               <Button variant="outline" onClick={() => goToTab("date")} data-testid="back-to-date">
                 Back
               </Button>
+              <Button onClick={goToServiceStep} disabled={!bookingData.timeSlot} data-testid="next-to-service">
+                Next
+              </Button>
             </div>
           </TabsContent>
 
@@ -153,6 +171,9 @@ export default function BookingSystem() {
             <div className="mt-6 flex justify-between">
               <Button variant="outline" onClick={() => goToTab("time")} data-testid="back-to-time">
                 Back
+              </Button>
+              <Button onClick={goToDetailsStep} disabled={!bookingData.service} data-testid="next-to-details">
+                Next
               </Button>
             </div>
           </TabsContent>
@@ -178,3 +199,4 @@ export default function BookingSystem() {
     </Card>
   )
 }
+
